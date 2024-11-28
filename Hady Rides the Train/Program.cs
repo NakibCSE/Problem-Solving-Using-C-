@@ -1,15 +1,41 @@
-﻿
-    long x = long.Parse(Console.ReadLine());
-
-    long row = x / 4;
-    long col;
-
-    if (row % 2 == 0)
+﻿int x = int.Parse(Console.ReadLine());
+if (x == 0)
+{
+    Console.WriteLine(0 + " " + 0);
+}
+else
+{
+    int[,] input = new int[x, 4];
+    int number = 0;
+    for (int i = 0; i < x; i++)
     {
-        col = x % 4;
+        if (i % 2 == 1)
+        {
+            for (int j = 3; j >= 0; j--)
+            {
+                input[i, j] = number;
+
+                number++;
+            }
+        }
+        else
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                input[i, j] = number;
+
+                number++;
+            }
+        }
+
     }
-    else
+
+    for (int i = 0; i < x; i++)
     {
-        col = 3 - (x % 4);
+        for (int j = 0; j < 4; j++)
+        {
+            Console.Write($"({i},{j}) = {input[i, j]} ");
+        }
+        Console.WriteLine();
     }
-    Console.WriteLine($"{row} {col}");
+}
